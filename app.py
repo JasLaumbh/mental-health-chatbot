@@ -21,19 +21,22 @@ if "messages" not in st.session_state:
 st.title("Mental Health Chatbot 💬")
 
 # Display previous messages
-for msg in st.session_state.messages:
-    role, content = msg
+for role, message in st.session_state.messages:
     if role == "user":
-        st.markdown(f"**You:** {content}")
+        st.markdown(f"**You:** {message}")
     else:
-        st.markdown(f"**Bot:** {content}")
+        st.markdown(f"**Bot:** {message}")
 
-# Input box
-user_input = st.text_input("Type your message")
+# User input
+user_input = st.text_input("Type your message:", key="input")
 
+# If there's user input
 if user_input:
     st.session_state.messages.append(("user", user_input))
     intent = model.predict([user_input])[0]
     response = responses.get(intent, "I'm here to listen. Tell me more.")
     st.session_state.messages.append(("bot", response))
-    st.experimental_rerun()
+    
+    # Clear input field (simulate rerun)
+    st.session_state.input = ""
+    st.experimental_set_query_params()  # Light refresh to apply updates
