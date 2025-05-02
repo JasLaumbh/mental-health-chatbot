@@ -1,4 +1,4 @@
-#💬 Mental Health Chatbot using NLP
+#Mental Health Chatbot using NLP
 This project is an interactive, AI-powered mental health chatbot built using Natural Language Processing (NLP) and Streamlit. It aims to provide a supportive space for users to express their emotions, receive empathetic responses, and raise awareness about mental well-being.
 
 🧠 Overview
